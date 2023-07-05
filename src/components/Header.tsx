@@ -77,16 +77,18 @@ export default function Header() {
         <Toolbar sx={toolbarStyle} disableGutters>
           {/* Logo */}
           <Box display={"flex"} flex={1} justifyContent={"flex-start"}>
-            <Box display="flex" height={headerHeight} width={headerHeight}>
-              <Image
-                src={"/images/logo.png"}
-                alt="logo"
-                width={0} //for not specify width and height and make the Image fit the container
-                height={0}
-                sizes={headerHeight} //needed for not blurry image
-                style={{ height: "100%", width: "auto" }}
-              />
-            </Box>
+            <Link href={"/"} underline="none">
+              <Box display="flex" height={headerHeight} width={headerHeight}>
+                <Image
+                  src={"/images/logo.png"}
+                  alt="logo"
+                  width={0} //for not specify width and height and make the Image fit the container
+                  height={0}
+                  sizes={headerHeight} //needed for not blurry image
+                  style={{ height: "100%", width: "auto" }}
+                />
+              </Box>
+            </Link>
           </Box>
 
           {/* Name */}
