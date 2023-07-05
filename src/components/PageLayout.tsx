@@ -29,7 +29,7 @@ export default function PageLayout(props: PageLayoutProps) {
             }}
           />
         </Box>
-        <Container >
+        <Container>
           <Box display={"flex"} flexDirection={"column"} gap={1}>
             {props.children}
           </Box>

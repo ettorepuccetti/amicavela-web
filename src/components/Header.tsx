@@ -1,129 +1,130 @@
+import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
+import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import NavigationOutlinedIcon from "@mui/icons-material/NavigationOutlined";
+import PhotoLibraryOutlinedIcon from "@mui/icons-material/PhotoLibraryOutlined";
+import SailingOutlinedIcon from "@mui/icons-material/SailingOutlined";
+import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
 import {
-  AppBar,
   Box,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  Toolbar,
   Typography,
+  useMediaQuery,
+  useTheme,
+  type SxProps,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import AppBar from "@mui/material/AppBar";
+import IconButton from "@mui/material/IconButton";
+import Toolbar from "@mui/material/Toolbar";
 import Image from "next/image";
-import logoSrc from "public/images/logo.png";
 import React from "react";
 import Link from "../Link";
-import styles from "../style/Header.module.css";
+import DrawerWrapper from "./DrawerWrapper";
 
-const Header = () => {
-  const links = [
-    { id: 0, route: "Home", url: "/" },
-    { id: 1, route: "Corsi di vela", url: "/corsi" },
-    { id: 2, route: "Regate", url: "/regate" },
-    { id: 3, route: "Navigazione assistita", url: "/navigazione-assistita" },
-    {
-      id: 4,
-      route: "Foto",
-      url: "https://photos.app.goo.gl/OZuaH2dSTmejeHBk1",
-    },
-    {
-      id: 5,
-      route: "Documenti",
-      url: "https://drive.google.com/drive/folders/1dkhBGIxtmX-ngm5adFuYwyUmDMI-LFS1?usp=sharing",
-    },
-    { id: 6, route: "Sponsor", url: "/sponsor" },
-  ];
+const headerHeight = "10vh";
 
-  const [state, setState] = React.useState(false);
+const toolbarStyle: SxProps = {
+  backgroundColor: "white",
+  padding: "20px",
+  height: headerHeight,
+  justifyContent: "space-between",
+  display: "flex",
+};
 
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (
-        event.type === "keydown" &&
-        (event.key === "Tab" || event.key === "Shift")
-      ) {
-        return;
-      }
+const links = [
+  { id: 0, route: "Home", url: "/", icon: HomeOutlinedIcon },
+  { id: 1, route: "Corsi di vela", url: "/corsi", icon: SchoolOutlinedIcon },
+  { id: 2, route: "Regate", url: "/regate", icon: SailingOutlinedIcon },
+  {
+    id: 3,
+    route: "Navigazione assistita",
+    url: "/navigazione-assistita",
+    icon: NavigationOutlinedIcon,
+  },
+  {
+    id: 4,
+    route: "Foto",
+    url: "https://photos.app.goo.gl/OZuaH2dSTmejeHBk1",
+    icon: PhotoLibraryOutlinedIcon,
+  },
+  {
+    id: 5,
+    route: "Documenti",
+    url: "https://drive.google.com/drive/folders/1dkhBGIxtmX-ngm5adFuYwyUmDMI-LFS1?usp=sharing",
+    icon: ArchiveOutlinedIcon,
+  },
+  {
+    id: 6,
+    route: "Sponsor",
+    url: "/sponsor",
+    icon: MonetizationOnOutlinedIcon,
+  },
+];
 
-      setState(open);
-    };
-
-  const list = () => (
-    <Box
-      sx={{ width: 250 }}
-      role="presentation"
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        {links.map((link) => (
-          <ListItem button key={link.id}>
-            <Link href={link.url} underline="none">
-              <Typography
-                className={styles.link}
-                color={theme.palette.primary.main}
-              >
-                {link.route}
-              </Typography>
-            </Link>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
+export default function Header() {
+  const [openDrawer, setOpenDrawer] = React.useState(false);
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const smallScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  const logoStyle = {
+    cursor: "pointer",
+    fontWeight: 500,
+  };
 
   return (
-    <Box sx={{ marginBottom: "10vh" }}>
-      <AppBar>
-        <Toolbar className={styles.toolbar}>
-          <Link href={"/"} sx={{ height: "inherit" }}>
-            <Image className={styles.logo} src={logoSrc} alt="Amica Vela" />
-          </Link>
+    <>
+      <AppBar position={"fixed"}>
+        <Toolbar sx={toolbarStyle} disableGutters>
+          {/* Logo */}
+          <Box display={"flex"} flex={1} justifyContent={"flex-start"}>
+            <Box display="flex" height={headerHeight} width={headerHeight}>
+              <Image
+                src={"/images/logo.png"}
+                alt="logo"
+                width={0} //for not specify width and height and make the Image fit the container
+                height={0}
+                sizes={headerHeight} //needed for not blurry image
+                style={{ height: "100%", width: "auto" }}
+              />
+            </Box>
+          </Box>
 
-          {matches ? (
-            <Box>
+          {/* Name */}
+          <Typography variant="h5" sx={logoStyle}>
+            {""}
+          </Typography>
+
+          {/* Links or Drawer */}
+          {smallScreen ? (
+            <Box display={"flex"} flex={1} justifyContent={"flex-end"}>
               <IconButton
                 size="large"
-                edge="end"
+                edge="start"
                 color="inherit"
-                aria-label="menu"
-                onClick={(_e) => setState(true)}
+                onClick={(_e) => setOpenDrawer(!openDrawer)}
               >
-                <MenuIcon className={styles.menuIcon} />
+                <MenuIcon sx={{ color: "black" }} />
               </IconButton>
-
-              <Drawer anchor="right" open={state} onClose={toggleDrawer(false)}>
-                {list()}
-              </Drawer>
+              <DrawerWrapper
+                open={openDrawer}
+                setOpen={setOpenDrawer}
+                list={links}
+              />
             </Box>
           ) : (
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                flexGrow: "0.1",
-              }}
-            >
+            <Box display={"flex"} gap={"1.5rem"}>
               {links.map((link) => (
-                <Link href={link.url} underline="none" key={link.id}>
-                  <Typography
-                    className={styles.link}
-                    color={theme.palette.primary.main}
-                  >
-                    {link.route}
-                  </Typography>
+                <Link href={link.url} key={link.id} underline="none">
+                  <Typography>{link.route}</Typography>
                 </Link>
               ))}
             </Box>
           )}
         </Toolbar>
       </AppBar>
-    </Box>
-  );
-};
 
-export default Header;
+      {/* empty toolbar for prevent page content going behind the real toolbar */}
+      <Toolbar sx={toolbarStyle} />
+    </>
+  );
+}
