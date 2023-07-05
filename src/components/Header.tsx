@@ -21,11 +21,11 @@ import React from "react";
 import Link from "../Link";
 import DrawerWrapper from "./DrawerWrapper";
 
-const headerHeight = "10vh";
+export const headerHeight = "calc(max(10vh, 64px))";
 
 const toolbarStyle: SxProps = {
   backgroundColor: "white",
-  padding: "20px",
+  paddingX: "20px",
   height: headerHeight,
   justifyContent: "space-between",
   display: "flex",
