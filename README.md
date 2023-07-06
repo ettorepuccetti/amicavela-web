@@ -1,44 +1,98 @@
-# Material UI - Next.js example in TypeScript
+# Amicavela-web
+Website project for the Amicavela, a local sailing sport association. Build with [Next.js](https://nextjs.org/), and [Material-UI](https://material-ui.com/).
+## Preview
+[https://amicavela.vercel.app/](https://amicavela.vercel.app/)
 
-## How to use
+## Contribute
+### Prerequisites
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+- [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-<!-- #default-branch-switch -->
-
-```sh
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/material-next-ts
-cd material-next-ts
+Install it with wget:
+```
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
 
-Install it and run:
+or with curl:
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+```
+
+Check if the installation was successful:
+```
+command -v nvm
+```
+it should just return the string '`nvm`'
+
+<b>Note</b>: `nvm` also support Windows in some cases. It should work through WSL (Windows Subsystem for Linux) depending on the version of WSL. It should also work with GitBash (MSYS) or Cygwin.
+
+<br>
+  
+- [Node.js](https://nodejs.org/en/download/) (version 14 or higher)
+
+Once nvm is installed, install the required Node.js version:
+```
+nvm install node
+```
+<br>
+
+### Installation
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/ettorepuccetti/amicavela-web
+
+cd amicavela-web
+```
+
+2. Install the required Node.js version:
+
+```sh
+nvm install
+```
+
+3. Install the project dependencies:
 
 ```sh
 npm install
+```
+
+<br>
+
+### Usage
+
+To start the development server, run:
+
+```sh
 npm run dev
 ```
 
-or:
+The server will be available at http://localhost:3000.
 
-<!-- #default-branch-switch -->
+<br>
 
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/material-next-ts)
+### Building for production
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/material-next-ts)
+To build the project for production, run:
 
-## The idea behind the example
+```sh
+npm run build
+```
 
-The project uses [Next.js](https://github.com/vercel/next.js), which is a framework for server-rendered React apps.
-It includes `@mui/material` and its peer dependencies, including [Emotion](https://emotion.sh/docs/introduction), the default style engine in Material UI v5. If you prefer, you can [use styled-components instead](https://mui.com/material-ui/guides/interoperability/#styled-components).
+This will generate a `build` directory with the optimized production build.
 
-## The link component
+To start the production server, run:
 
-The [example folder](https://github.com/mui/material-ui/tree/HEAD/examples/material-next-ts) provides an adapter for the use of [Next.js's Link component](https://nextjs.org/docs/api-reference/next/link) with MUI.
-More information [in the documentation](https://mui.com/material-ui/guides/routing/#next-js).
+```sh
+npm run start
+```
 
-## What's next?
+The server will be available at http://localhost:3000.
 
-<!-- #default-branch-switch -->
+<br>
 
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/material-ui/getting-started/templates/) section.
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
