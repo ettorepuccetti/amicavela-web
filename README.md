@@ -3,7 +3,7 @@ Website project for Amicavela, a local sailing sport association. Build with [Ne
 ## Preview
 [https://amicavela.vercel.app/](https://amicavela.vercel.app/)
 
-## Contribute
+## Getting started
 ### Prerequisites
 
 - [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
