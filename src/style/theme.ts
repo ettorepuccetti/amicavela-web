@@ -1,14 +1,13 @@
-import { Roboto } from 'next/font/google';
-import { createTheme } from '@mui/material/styles';
-import { green, grey, red } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
+import { createTheme } from "@mui/material/styles";
+import { Roboto } from "next/font/google";
 
 export const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-  fallback: ['Helvetica', 'Arial', 'sans-serif'],
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  fallback: ["Helvetica", "Arial", "sans-serif"],
 });
-
 
 const rawTheme = createTheme({
   palette: {
@@ -16,26 +15,7 @@ const rawTheme = createTheme({
       light: "#46ceff",
       main: "#00366b",
       dark: "#2c2c2c",
-    }
-  //   secondary: {
-  //     light: "#fff5f8",
-  //     main: "#ff3366",
-  //     dark: "#e62958",
-  //   },
-  //   warning: {
-  //     main: "#ffc071",
-  //     dark: "#ffb25e",
-  //   },
-  //   error: {
-  //     light: red[50],
-  //     main: red[500],
-  //     dark: red[700],
-  //   },
-  //   success: {
-  //     light: green[50],
-  //     main: green[500],
-  //     dark: green[700],
-  //   },
+    },
   },
   typography: {
     fontFamily: "'Work Sans', sans-serif",
@@ -50,7 +30,6 @@ const fontHeader = {
   color: rawTheme.palette.text.primary,
   fontWeight: rawTheme.typography.fontWeightMedium,
   fontFamily: "'Roboto Condensed', sans-serif",
-  // textTransform: "uppercase",
 };
 
 const theme = {
