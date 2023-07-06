@@ -1,5 +1,5 @@
 # Amicavela-web
-Website project for the Amicavela, a local sailing sport association. Build with [Next.js](https://nextjs.org/), and [Material-UI](https://material-ui.com/).
+Website project for Amicavela, a local sailing sport association. Build with [Next.js](https://nextjs.org/) and [Material-UI](https://material-ui.com/).
 ## Preview
 [https://amicavela.vercel.app/](https://amicavela.vercel.app/)
 
@@ -47,13 +47,7 @@ git clone https://github.com/ettorepuccetti/amicavela-web
 cd amicavela-web
 ```
 
-2. Install the required Node.js version:
-
-```sh
-nvm install
-```
-
-3. Install the project dependencies:
+2. Install the project dependencies:
 
 ```sh
 npm install
